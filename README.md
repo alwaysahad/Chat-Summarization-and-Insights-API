@@ -192,4 +192,36 @@ To use the Streamlit UI:
 1. Start the FastAPI backend server
 2. Run the Streamlit application
 3. Enter your User ID in the sidebar
-4. Start chatting and generating summaries 
+4. Start chatting and generating summaries
+
+## Docker Compose Quick Start
+
+1. Copy `.env.example` to `.env` and fill in your secrets:
+   ```bash
+   cp .env.example .env
+   # Edit .env to add your real API keys and secrets
+   ```
+2. Build and run all services:
+   ```bash
+   docker compose up --build
+   ```
+3. Access the API at [http://localhost:8000](http://localhost:8000)
+4. Access the UI at [http://localhost:8501](http://localhost:8501)
+
+- The API will connect to MongoDB at `mongo:27017` (inside Docker).
+- Data is persisted in a Docker volume (`mongo_data`).
+
+## Project Handoff Checklist
+
+Send the following files to your client:
+- `Dockerfile`
+- `docker-compose.yml`
+- `.env.example` (never send your real secrets)
+- All source code (`app/` and project files)
+- `requirements.txt`
+- `README.md`
+
+**Production Notes:**
+- For production, use strong secrets and secure your `.env` file.
+- Consider using HTTPS and a managed MongoDB service for reliability and security.
+- This setup can be deployed on any cloud VM or Docker host. 
